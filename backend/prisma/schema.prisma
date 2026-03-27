@@ -1,0 +1,442 @@
+generator client {
+  provider      = "prisma-client-js"
+  binaryTargets = ["native", "debian-openssl-1.1.x", "debian-openssl-3.0.x"]
+}
+
+datasource db {
+  provider = "postgresql"
+  url      = env("DATABASE_URL")
+}
+
+model Tenant {
+  id             String           @id @default(uuid())
+  name           String
+  slug           String           @unique
+  plan           String           @default("FREE")
+  seatsUsed      Int              @default(0)
+  seatsAllowed   Int              @default(1)
+  createdAt      DateTime         @default(now())
+  updatedAt      DateTime         @updatedAt
+  suspended      Boolean          @default(false)
+  settings       Json?
+  metadata       Json?
+  invitations    Invitation[]
+  users          User[]
+  proxyPools     ProxyPool[]
+  proxyEndpoints ProxyEndpoint[]
+  networkPolicies NetworkPolicy[]
+  fingerprintPresets FingerprintPreset[]
+  profiles       Profile[]
+  accounts       Account[]
+  flows          Flow[]
+  taskTemplates  TaskTemplate[]
+  taskBatches    TaskBatch[]
+  bulkOperations BulkOperation[]
+  accessControls AccessControl[]
+  webhooks       Webhook[]
+  jobLogs        JobLog[]
+  auditLogs      AuditLog[]
+  featureFlags   FeatureFlag[]
+  apiKeys        ApiKey[]
+
+  @@index([slug])
+}
+
+model User {
+  id               String          @id @default(uuid())
+  email            String          @unique
+  password         String
+  role             String          @default("OPERATOR")
+  tenantId         String
+  createdAt        DateTime        @default(now())
+  updatedAt        DateTime        @updatedAt
+  lastLogin        DateTime?
+  mfaEnabled       Boolean         @default(false)
+  mfaSecret        String?
+  suspended        Boolean         @default(false)
+  tenant           Tenant          @relation(fields: [tenantId], references: [id])
+  sessions         Session[]
+  invitationsSent  Invitation[]    @relation("InvitedBy")
+  invitationsReceived Invitation[] @relation("InvitedUser")
+  profiles         Profile[]
+  flows            Flow[]
+  accessControls   AccessControl[]
+  auditLogs        AuditLog[]
+  apiKeys          ApiKey[]
+
+  @@index([tenantId])
+}
+
+model Session {
+  id           String   @id @default(uuid())
+  userId       String
+  token        String   @unique
+  refreshToken String?  @unique
+  expiresAt    DateTime
+  createdAt    DateTime @default(now())
+  ipAddress    String?
+  userAgent    String?
+  deviceInfo   Json?
+  user         User     @relation(fields: [userId], references: [id])
+
+  @@index([userId])
+}
+
+model Invitation {
+  id          String   @id @default(uuid())
+  email       String
+  role        String   @default("OPERATOR")
+  token       String   @unique
+  expiresAt   DateTime
+  tenantId    String
+  invitedById String
+  status      String   @default("PENDING")
+  createdAt   DateTime @default(now())
+  tenant      Tenant   @relation(fields: [tenantId], references: [id])
+  invitedBy   User     @relation("InvitedBy", fields: [invitedById], references: [id])
+  user        User?    @relation("InvitedUser", fields: [email], references: [email])
+
+  @@index([tenantId])
+}
+
+model ProxyPool {
+  id          String          @id @default(uuid())
+  name        String
+  tenantId    String
+  description String?
+  rotationStrategy String     @default("ROUND_ROBIN")
+  type        String          @default("RESIDENTIAL") // RESIDENTIAL, MOBILE, DATA CENTER
+  provider    String?
+  settings    Json?
+  tenant      Tenant          @relation(fields: [tenantId], references: [id])
+  endpoints   ProxyEndpoint[]
+  profiles    Profile[]
+
+  @@index([tenantId])
+}
+
+model ProxyEndpoint {
+  id          String    @id @default(uuid())
+  host        String
+  port        Int
+  username    String?
+  password    String?
+  protocol    String    @default("HTTP") // HTTP, SOCKS5, SSH
+  poolId      String?
+  tenantId    String
+  country     String?
+  city        String?
+  region      String?
+  provider    String?
+  isp         String?
+  carrier     String?
+  asn         String?
+  endpointType String?
+  isActive    Boolean   @default(true)
+  lastCheck   DateTime?
+  lastLatencyMs Int?
+  failureCount Int      @default(0)
+  lastError   String?
+  status      String    @default("ACTIVE")
+  metadata    Json?
+  pool        ProxyPool? @relation(fields: [poolId], references: [id])
+  tenant      Tenant    @relation(fields: [tenantId], references: [id])
+  accounts    Account[]
+
+  @@index([tenantId])
+}
+
+model NetworkPolicy {
+  id          String    @id @default(uuid())
+  name        String
+  tenantId    String
+  dnsConfig   Json?
+  webrtcMode  String    @default("ALTERED") // ALTERED, REAL, DISABLED
+  geoRules    Json?
+  tenant      Tenant    @relation(fields: [tenantId], references: [id])
+  profiles    Profile[]
+
+  @@index([tenantId])
+}
+
+model FingerprintPreset {
+  id          String    @id @default(uuid())
+  name        String
+  tenantId    String
+  config      Json
+  platform    String    @default("WINDOWS")
+  browser     String    @default("CHROME")
+  tenant      Tenant    @relation(fields: [tenantId], references: [id])
+  profiles    Profile[]
+
+  @@index([tenantId])
+}
+
+model Profile {
+  id                  String             @id @default(uuid())
+  name                String
+  tenantId            String
+  createdAt           DateTime           @default(now())
+  dnsConfig           Json?
+  fingerprint         Json?
+  geolocation         Json?
+  locale              String?
+  proxyConfig         Json?
+  timezone            String?
+  webrtc              String?
+  platform            String?
+  proxyPoolId         String?
+  networkPolicyId     String?
+  fingerprintPresetId String?
+  userId              String             @default("unknown")
+  accounts            Account[]
+  tenant              Tenant             @relation(fields: [tenantId], references: [id])
+  proxyPool           ProxyPool?         @relation(fields: [proxyPoolId], references: [id])
+  networkPolicy       NetworkPolicy?     @relation(fields: [networkPolicyId], references: [id])
+  fingerprintPreset   FingerprintPreset? @relation(fields: [fingerprintPresetId], references: [id])
+  user                User               @relation(fields: [userId], references: [id])
+
+  @@index([tenantId])
+  @@index([userId])
+}
+
+model Account {
+  id              String         @id @default(uuid())
+  username        String
+  password        String
+  credentialStorage String       @default("legacy")
+  used            Boolean        @default(false)
+  verified        Boolean        @default(false)
+  inboxStatus     String         @default("unknown")
+  lastInboxCheck  DateTime?
+  lastVictoryAt   DateTime?
+  state           Json?
+  profileId       String
+  tenantId        String
+  proxyEndpointId String?
+  createdAt       DateTime       @default(now())
+  updatedAt       DateTime       @updatedAt
+  profile         Profile        @relation(fields: [profileId], references: [id])
+  tenant          Tenant         @relation(fields: [tenantId], references: [id])
+  proxyEndpoint   ProxyEndpoint? @relation(fields: [proxyEndpointId], references: [id])
+  jobLogs         JobLog[]
+
+  @@index([profileId])
+  @@index([tenantId])
+}
+
+model JobLog {
+  id        String   @id @default(uuid())
+  accountId String
+  tenantId  String   @default("unknown")
+  message   String?
+  level     String   @default("INFO")
+  type      String   @default("custom_job")
+  status    String   @default("pending")
+  createdAt DateTime @default(now())
+  metadata  Json?
+  account   Account  @relation(fields: [accountId], references: [id])
+  tenant    Tenant   @relation(fields: [tenantId], references: [id])
+
+  @@index([accountId])
+  @@index([tenantId])
+}
+
+model BulkOperation {
+  id         String   @id @default(uuid())
+  tenantId   String
+  type       String   @default("CREATE")
+  status     String   @default("PENDING")
+  totalTasks Int      @default(0)
+  completed  Int      @default(0)
+  failed     Int      @default(0)
+  errors     Json?
+  createdAt  DateTime @default(now())
+  updatedAt  DateTime @updatedAt
+  tenant     Tenant   @relation(fields: [tenantId], references: [id])
+
+  @@index([tenantId])
+}
+
+model FeatureFlag {
+  id          String   @id @default(uuid())
+  tenantId    String?
+  key         String
+  description String?
+  enabled     Boolean  @default(true)
+  rules       Json?
+  createdAt   DateTime @default(now())
+  tenant      Tenant?  @relation(fields: [tenantId], references: [id])
+
+  @@unique([tenantId, key])
+  @@index([tenantId])
+}
+
+model Flow {
+  id          String    @id @default(uuid())
+  name        String
+  description String?
+  tenantId    String
+  userId      String    @default("unknown")
+  steps       Json      // Sequence of nodes: { id, type, params }
+  isPublic    Boolean   @default(false)
+  createdAt   DateTime  @default(now())
+  updatedAt   DateTime  @updatedAt
+  lastRunAt   DateTime?
+  tenant      Tenant    @relation(fields: [tenantId], references: [id])
+  user        User      @relation(fields: [userId], references: [id])
+  runs        FlowRun[]
+  comments    Comment[]
+  tags        Tag[]
+
+  @@index([tenantId])
+  @@index([userId])
+}
+
+model FlowRun {
+  id          String   @id @default(uuid())
+  flowId      String
+  tenantId    String
+  status      String   @default("PENDING")
+  fingerprint Json?
+  duration    Int?     // milliseconds
+  logs        Json?
+  result      Json?
+  error       String?
+  startedAt      DateTime  @default(now())
+  completedAt    DateTime?
+  lastScreenshot String?
+  liveStepId     String?
+  createdAt      DateTime  @default(now())
+  flow        Flow     @relation(fields: [flowId], references: [id])
+  steps       FlowRunStep[]
+
+  @@index([flowId])
+  @@index([tenantId])
+}
+
+model FlowRunStep {
+  id          String   @id @default(uuid())
+  runId       String
+  stepId      String
+  status      String   @default("PENDING")
+  startedAt   DateTime @default(now())
+  completedAt DateTime?
+  output      Json?
+  error       String?
+  run         FlowRun  @relation(fields: [runId], references: [id], onDelete: Cascade)
+
+  @@index([runId])
+}
+
+model Comment {
+  id        String   @id @default(uuid())
+  content   String
+  flowId    String
+  authorId  String
+  createdAt DateTime @default(now())
+  flow      Flow     @relation(fields: [flowId], references: [id])
+
+  @@index([flowId])
+}
+
+model Tag {
+  id     String @id @default(uuid())
+  name   String @unique
+  flows  Flow[]
+}
+
+model ApiKey {
+  id        String    @id @default(uuid())
+  key       String    @unique
+  name      String
+  tenantId  String
+  userId    String
+  prefix    String
+  scopes    String[]  @default(["read", "write"])
+  expiresAt DateTime?
+  lastUsed  DateTime?
+  createdAt DateTime  @default(now())
+  updatedAt DateTime  @updatedAt
+  tenant    Tenant    @relation(fields: [tenantId], references: [id])
+  user      User      @relation(fields: [userId], references: [id])
+
+  @@index([tenantId])
+}
+
+model AccessControl {
+  id         String   @id @default(uuid())
+  tenantId   String
+  userId     String
+  resourceId String
+  resourceType String // 'profile' or 'flow'
+  permission String // 'READ', 'WRITE', 'EXECUTE'
+  createdAt  DateTime @default(now())
+  tenant     Tenant   @relation(fields: [tenantId], references: [id])
+  user       User     @relation(fields: [userId], references: [id])
+
+  @@unique([userId, resourceId, permission])
+  @@index([resourceId])
+}
+
+model Webhook {
+  id        String   @id @default(uuid())
+  tenantId  String
+  url       String
+  secret    String
+  events    String[] // e.g., ['flow_completed', 'evasion_alert']
+  active    Boolean  @default(true)
+  createdAt DateTime @default(now())
+  tenant    Tenant   @relation(fields: [tenantId], references: [id])
+}
+
+model TaskTemplate {
+  id          String      @id @default(uuid())
+  tenantId    String?     // Nullable for global templates
+  name        String
+  description String?
+  jobType     String
+  payload     Json
+  createdBy   String?
+  createdAt   DateTime    @default(now())
+  tenant      Tenant?     @relation(fields: [tenantId], references: [id])
+  batches     TaskBatch[]
+
+  @@index([tenantId])
+}
+
+model TaskBatch {
+  id          String       @id @default(uuid())
+  tenantId    String
+  name        String
+  templateId  String?
+  status      String       @default("pending")
+  totalTasks  Int          @default(0)
+  completed   Int          @default(0)
+  failed      Int          @default(0)
+  createdBy   String?
+  scheduledAt DateTime?
+  startedAt   DateTime?
+  createdAt   DateTime     @default(now())
+  tenant      Tenant       @relation(fields: [tenantId], references: [id])
+  template    TaskTemplate? @relation(fields: [templateId], references: [id])
+
+  @@index([tenantId])
+  @@index([templateId])
+}
+
+model AuditLog {
+  id        String   @id @default(uuid())
+  tenantId  String
+  userId    String
+  action    String
+  resource  String
+  detail    Json?
+  ip        String?
+  createdAt DateTime @default(now())
+  tenant    Tenant   @relation(fields: [tenantId], references: [id])
+  user      User     @relation(fields: [userId], references: [id])
+
+  @@index([tenantId])
+  @@index([userId])
+}

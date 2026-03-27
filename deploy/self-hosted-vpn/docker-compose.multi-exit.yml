@@ -1,0 +1,72 @@
+services:
+  wg-exit-1:
+    image: ghcr.io/wg-easy/wg-easy:latest
+    container_name: camel-wg-exit-1
+    restart: unless-stopped
+    env_file:
+      - ./exits/wg-exit-1.env
+    ports:
+      - "51820:51820/udp"
+      - "51821:51821/tcp"
+    cap_add:
+      - NET_ADMIN
+      - SYS_MODULE
+    sysctls:
+      - net.ipv4.ip_forward=1
+      - net.ipv4.conf.all.src_valid_mark=1
+    volumes:
+      - ./data/wg-exit-1:/etc/wireguard
+
+  wg-exit-2:
+    image: ghcr.io/wg-easy/wg-easy:latest
+    container_name: camel-wg-exit-2
+    restart: unless-stopped
+    env_file:
+      - ./exits/wg-exit-2.env
+    ports:
+      - "51830:51820/udp"
+      - "51831:51821/tcp"
+    cap_add:
+      - NET_ADMIN
+      - SYS_MODULE
+    sysctls:
+      - net.ipv4.ip_forward=1
+      - net.ipv4.conf.all.src_valid_mark=1
+    volumes:
+      - ./data/wg-exit-2:/etc/wireguard
+
+  wg-exit-3:
+    image: ghcr.io/wg-easy/wg-easy:latest
+    container_name: camel-wg-exit-3
+    restart: unless-stopped
+    env_file:
+      - ./exits/wg-exit-3.env
+    ports:
+      - "51840:51820/udp"
+      - "51841:51821/tcp"
+    cap_add:
+      - NET_ADMIN
+      - SYS_MODULE
+    sysctls:
+      - net.ipv4.ip_forward=1
+      - net.ipv4.conf.all.src_valid_mark=1
+    volumes:
+      - ./data/wg-exit-3:/etc/wireguard
+
+  wg-exit-4:
+    image: ghcr.io/wg-easy/wg-easy:latest
+    container_name: camel-wg-exit-4
+    restart: unless-stopped
+    env_file:
+      - ./exits/wg-exit-4.env
+    ports:
+      - "51850:51820/udp"
+      - "51851:51821/tcp"
+    cap_add:
+      - NET_ADMIN
+      - SYS_MODULE
+    sysctls:
+      - net.ipv4.ip_forward=1
+      - net.ipv4.conf.all.src_valid_mark=1
+    volumes:
+      - ./data/wg-exit-4:/etc/wireguard

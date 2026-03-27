@@ -1,0 +1,8 @@
+node_modules
+dist
+data
+frontend/dist
+.git
+.env
+.env.production
+*.log

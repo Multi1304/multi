@@ -1,0 +1,24 @@
+services:
+  wg-exit-1:
+    image: vimagick/tinyproxy
+    ports:
+      - "1081:8888"
+    restart: always
+
+  wg-exit-2:
+    image: vimagick/tinyproxy
+    ports:
+      - "1082:8888"
+    restart: always
+
+  wg-exit-3:
+    image: vimagick/tinyproxy
+    ports:
+      - "1083:8888"
+    restart: always
+
+  wg-exit-4:
+    image: vimagick/tinyproxy
+    ports:
+      - "1084:8888"
+    restart: always

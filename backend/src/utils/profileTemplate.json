@@ -1,0 +1,28 @@
+{
+  "name": "Advanced V3 Profile 2026",
+  "browser": "chromium",
+  "stealth": {
+    "enabled": true,
+    "canvasSeed": 12345678,
+    "webglVendor": "Google Inc. (Apple)",
+    "webglRenderer": "ANGLE (Apple, Apple M2 Pro, OpenGL 4.2)",
+    "audioPerturbation": 0.0001,
+    "hardwareConcurrency": 8,
+    "deviceMemory": 16
+  },
+  "fingerprint": {
+    "uaPool": [
+      "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/122.0.0.0 Safari/537.36",
+      "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/122.0.0.0 Safari/537.36",
+      "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/122.0.0.0 Safari/537.36 Edg/122.0.0.0"
+    ],
+    "screenRes": "1920x1080",
+    "timezone": "America/New_York",
+    "language": "en-US",
+    "fonts": ["Arial", "Helvetica", "Times New Roman", "Courier New", "Verdana"]
+  },
+  "network": {
+    "proxy": "socks5://127.0.0.1:9050",
+    "cookies": []
+  }
+}

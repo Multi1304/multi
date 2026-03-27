@@ -1,0 +1,44 @@
+{
+  "exits": [
+    {
+      "name": "wg-exit-1",
+      "host": "vpn-exit-1.example.net",
+      "port": 1080,
+      "country": "es",
+      "city": "madrid",
+      "group": "stable_internal",
+      "cluster": "wg-cluster-1",
+      "protocol": "HTTP"
+    },
+    {
+      "name": "wg-exit-2",
+      "host": "vpn-exit-2.example.net",
+      "port": 1080,
+      "country": "pt",
+      "city": "lisbon",
+      "group": "geo_sensitive",
+      "cluster": "wg-cluster-2",
+      "protocol": "HTTP"
+    },
+    {
+      "name": "wg-exit-3",
+      "host": "vpn-exit-3.example.net",
+      "port": 1080,
+      "country": "es",
+      "city": "madrid",
+      "group": "overflow_backup",
+      "cluster": "wg-cluster-3",
+      "protocol": "HTTP"
+    },
+    {
+      "name": "wg-exit-4",
+      "host": "vpn-exit-4.example.net",
+      "port": 1080,
+      "country": "es",
+      "city": "barcelona",
+      "group": "high_separation",
+      "cluster": "wg-cluster-4",
+      "protocol": "HTTP"
+    }
+  ]
+}

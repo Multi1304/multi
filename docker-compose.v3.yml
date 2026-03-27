@@ -1,0 +1,49 @@
+version: '3.8'
+
+services:
+  backend-cluster:
+    build:
+      context: ./backend
+      dockerfile: Dockerfile.v3
+    ports:
+      - "4001-4005:4000"
+    environment:
+      - DATABASE_URL=postgres://postgres:postgres@db:5432/multilogin
+      - REDIS_HOST=redis
+      - NODE_ENV=production
+    deploy:
+      replicas: 5
+      update_config:
+        parallelism: 2
+        delay: 10s
+    healthcheck:
+      test: ["CMD", "curl", "-f", "http://localhost:4000/health"]
+      interval: 30s
+      timeout: 10s
+      retries: 3
+    networks:
+      - app-network
+
+  redis:
+    image: redis:7.2-alpine
+    command: redis-server --save 60 1 --loglevel warning
+    networks:
+      - app-network
+
+  db:
+    image: postgres:15-alpine
+    environment:
+      - POSTGRES_USER=postgres
+      - POSTGRES_PASSWORD=postgres
+      - POSTGRES_DB=multilogin
+    volumes:
+      - postgres_data:/var/lib/postgresql/data
+    networks:
+      - app-network
+
+networks:
+  app-network:
+    driver: bridge
+
+volumes:
+  postgres_data:

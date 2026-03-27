@@ -1,0 +1,23 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: camel-worker
+  namespace: camel
+spec:
+  replicas: 6
+  selector:
+    matchLabels:
+      app: camel-worker
+  template:
+    metadata:
+      labels:
+        app: camel-worker
+    spec:
+      containers:
+        - name: worker
+          image: camel/worker:latest
+          env:
+            - name: NODE_ENV
+              value: production
+            - name: WORKER_CONCURRENCY
+              value: "12"

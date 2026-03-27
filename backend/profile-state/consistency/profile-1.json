@@ -1,0 +1,17 @@
+{
+  "profileId": "profile-1",
+  "tenantId": "tenant-1",
+  "firstSeenAt": "2026-03-19T13:26:36.032Z",
+  "lastSeenAt": "2026-03-19T13:26:36.032Z",
+  "stickyUntil": "2026-04-02T13:26:36.032Z",
+  "driftCount": 0,
+  "endpointId": null,
+  "lastDriftAt": null,
+  "fingerprintHash": "7df753d4e1bea73e1d32888a429db8a4c4a021e6d7191659ec9ed5b205efcdaa",
+  "fingerprintSnapshot": {
+    "userAgent": "UA-1",
+    "hardwareConcurrency": 8,
+    "screenResolution": "1920x1080",
+    "runtimeEnvironment": "production"
+  }
+}

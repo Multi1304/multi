@@ -1,0 +1,68 @@
+{
+  "profileId": "d397f202-5a84-4ecf-874e-0d77c135dc25",
+  "tenantId": "958bc68c-06ea-4ab9-b8da-2e2a1f26c13a",
+  "firstSeenAt": "2026-03-21T00:09:47.728Z",
+  "lastSeenAt": "2026-03-21T00:09:51.682Z",
+  "stickyUntil": "2026-04-04T00:09:51.682Z",
+  "driftCount": 0,
+  "endpointId": "c45f362c-01d4-4e5b-8305-1b4c33e39483",
+  "lastDriftAt": null,
+  "fingerprintHash": "193dee531541eed9ea96cc8a30117d4d715c7095763e38de0c617052139e3b5e",
+  "fingerprintSnapshot": {
+    "screen": {
+      "width": 1920,
+      "height": 1080
+    },
+    "userAgent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/120.0.0.0 Safari/537.36",
+    "isMobile": false,
+    "screenResolution": "1536x864",
+    "hardwareConcurrency": 4,
+    "deviceMemory": 4,
+    "deviceScaleFactor": 1,
+    "maxTouchPoints": 0,
+    "timezoneId": "Europe/Madrid",
+    "language": "es-ES",
+    "platformOS": "Windows",
+    "webgl": {
+      "vendor": "Apple Inc.",
+      "renderer": "Apple GPU",
+      "unmaskedVendor": "Apple Inc.",
+      "unmaskedRenderer": "Apple GPU"
+    },
+    "plugins": [
+      "PDF Viewer",
+      "Chrome PDF Viewer",
+      "Chromium PDF Viewer"
+    ],
+    "fonts": [
+      "Arial",
+      "Verdana",
+      "Georgia",
+      "Times New Roman",
+      "Courier New",
+      "Trebuchet MS"
+    ],
+    "validation": {
+      "score": 0,
+      "issues": []
+    },
+    "hardening": {
+      "score": 40,
+      "adjustments": [
+        "Applied fallback screen resolution.",
+        "Normalized hardwareConcurrency to 4.",
+        "Normalized deviceMemory to 4.",
+        "Adjusted deviceScaleFactor to 1.",
+        "Normalized timezone to Europe/Madrid.",
+        "Aligned language to es-ES.",
+        "Normalized platformOS to Windows.",
+        "Aligned WebGL pair to Apple Inc..",
+        "Normalized plugin surface for the target device class.",
+        "Normalized font surface for the target device class."
+      ],
+      "riskLevel": "hold",
+      "blockingIssues": [],
+      "normalizedAt": "2026-03-21T00:09:47.723Z"
+    }
+  }
+}

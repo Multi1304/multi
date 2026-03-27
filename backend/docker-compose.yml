@@ -1,0 +1,94 @@
+version: "3.8"
+services:
+  postgres:
+    image: postgres:15
+    environment:
+      POSTGRES_USER: postgres
+      POSTGRES_PASSWORD: postgres
+      POSTGRES_DB: multilogin
+    volumes:
+      - pgdata:/var/lib/postgresql/data
+    ports:
+      - "5432:5432"
+    healthcheck:
+      test: ["CMD-SHELL", "pg_isready -U postgres"]
+      interval: 5s
+      timeout: 3s
+      retries: 5
+
+  redis:
+    image: redis:7.2-alpine
+    ports:
+      - "6380:6379"
+    healthcheck:
+      test: ["CMD", "redis-cli", "ping"]
+      interval: 5s
+      timeout: 3s
+      retries: 5
+
+  api:
+    build: .
+    command: npm run dev
+    working_dir: /app
+    volumes:
+      - ./:/app
+      - /app/node_modules
+      - profiles_data:/app/profiles
+    environment:
+      DATABASE_URL: postgres://postgres:postgres@postgres:5432/multilogin
+      REDIS_HOST: redis
+      REDIS_PORT: 6379
+      PORT: 4000
+      JWT_SECRET: "${JWT_SECRET:-super-secret-change-in-production}"
+      STRIPE_SECRET_KEY: "${STRIPE_SECRET_KEY:-}"
+      STRIPE_WEBHOOK_SECRET: "${STRIPE_WEBHOOK_SECRET:-}"
+      STRIPE_PRICE_PRO: "${STRIPE_PRICE_PRO:-}"
+      STRIPE_PRICE_ENTERPRISE: "${STRIPE_PRICE_ENTERPRISE:-}"
+      STRIPE_PRICE_ULTRA: "${STRIPE_PRICE_ULTRA:-}"
+      ENCRYPTION_KEY: "${ENCRYPTION_KEY:-default-dev-key-change-in-prod!!}"
+      LOG_LEVEL: "${LOG_LEVEL:-INFO}"
+    ports:
+      - "4000:4000"
+    depends_on:
+      postgres:
+        condition: service_healthy
+      redis:
+        condition: service_healthy
+
+  worker:
+    build: .
+    command: npx ts-node-dev --respawn --transpile-only src/workers/automation.worker.ts
+    working_dir: /app
+    volumes:
+      - ./:/app
+      - /app/node_modules
+      - profiles_data:/app/profiles
+    environment:
+      DATABASE_URL: postgres://postgres:postgres@postgres:5432/multilogin
+      REDIS_HOST: redis
+      REDIS_PORT: 6379
+      JWT_SECRET: "${JWT_SECRET:-super-secret-change-in-production}"
+      ENCRYPTION_KEY: "${ENCRYPTION_KEY:-default-dev-key-change-in-prod!!}"
+      WORKER_CONCURRENCY: "${WORKER_CONCURRENCY:-5}"
+      WORKER_ID: worker-1
+      LOG_LEVEL: "${LOG_LEVEL:-INFO}"
+    depends_on:
+      postgres:
+        condition: service_healthy
+      redis:
+        condition: service_healthy
+
+  frontend:
+    build: ../frontend
+    container_name: multilogin_frontend
+    ports:
+      - "3000:80"
+    restart: unless-stopped
+    depends_on:
+      - api
+    environment:
+      - VITE_API_URL=http://localhost:4000
+
+volumes:
+  pgdata:
+  profiles_data:

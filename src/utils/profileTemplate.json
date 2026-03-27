@@ -1,0 +1,47 @@
+{
+  "pool_2026": [
+    {
+      "id": "tpl-pro-001",
+      "name": "Corporate Marketer (NY)",
+      "userAgent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/142.0.6261.39 Safari/537.36",
+      "screenRes": [1920, 1080],
+      "fonts": ["Arial", "Segoe UI", "Tahoma"],
+      "timezone": "America/New_York",
+      "hardwareConcurrency": 16,
+      "deviceMemory": 16,
+      "canvasSeed": 98231,
+      "webglVendor": "Google Inc.",
+      "webglRenderer": "ANGLE (NVIDIA, NVIDIA GeForce RTX 4090)"
+    },
+    {
+      "id": "tpl-mini-002",
+      "name": "Creative Designer (Berlin)",
+      "userAgent": "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/605.1.15 (KHTML, like Gecko) Version/19.1 Safari/605.1.15",
+      "screenRes": [2560, 1440],
+      "fonts": ["Helvetica Neue", "Arial", "Courier"],
+      "timezone": "Europe/Berlin",
+      "hardwareConcurrency": 8,
+      "deviceMemory": 32,
+      "canvasSeed": 11223,
+      "webglVendor": "Apple Inc.",
+      "webglRenderer": "Apple M3 Max"
+    },
+    {
+      "id": "tpl-mob-003",
+      "name": "Social Manager (Mobile)",
+      "userAgent": "Mozilla/5.0 (Linux; Android 16; Pixel 9 Pro) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/142.0.0.0 Mobile Safari/537.36",
+      "screenRes": [1080, 2400],
+      "fonts": ["Roboto", "Noto Sans"],
+      "timezone": "America/Los_Angeles",
+      "hardwareConcurrency": 8,
+      "deviceMemory": 12,
+      "canvasSeed": 44556,
+      "webglVendor": "Qualcomm",
+      "webglRenderer": "Adreno (TM) 830"
+    }
+  ],
+  "proxy_defaults": {
+    "type": "residential",
+    "rotation": "sticky"
+  }
+}

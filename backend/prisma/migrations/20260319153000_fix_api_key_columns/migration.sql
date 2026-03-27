@@ -1,0 +1,38 @@
+ALTER TABLE "ApiKey"
+ADD COLUMN IF NOT EXISTS "prefix" TEXT;
+
+ALTER TABLE "ApiKey"
+ADD COLUMN IF NOT EXISTS "scopes" TEXT[] DEFAULT ARRAY['read', 'write']::TEXT[];
+
+ALTER TABLE "ApiKey"
+ADD COLUMN IF NOT EXISTS "lastUsed" TIMESTAMP(3);
+
+ALTER TABLE "ApiKey"
+ADD COLUMN IF NOT EXISTS "updatedAt" TIMESTAMP(3) DEFAULT CURRENT_TIMESTAMP;
+
+UPDATE "ApiKey"
+SET "prefix" = COALESCE("prefix", 'legacy')
+WHERE "prefix" IS NULL;
+
+UPDATE "ApiKey"
+SET "scopes" = COALESCE("scopes", ARRAY['read', 'write']::TEXT[])
+WHERE "scopes" IS NULL;
+
+UPDATE "ApiKey"
+SET "updatedAt" = COALESCE("updatedAt", "createdAt", CURRENT_TIMESTAMP)
+WHERE "updatedAt" IS NULL;
+
+ALTER TABLE "ApiKey"
+ALTER COLUMN "prefix" SET NOT NULL;
+
+ALTER TABLE "ApiKey"
+ALTER COLUMN "scopes" SET DEFAULT ARRAY['read', 'write']::TEXT[];
+
+ALTER TABLE "ApiKey"
+ALTER COLUMN "scopes" SET NOT NULL;
+
+ALTER TABLE "ApiKey"
+ALTER COLUMN "updatedAt" SET DEFAULT CURRENT_TIMESTAMP;
+
+ALTER TABLE "ApiKey"
+ALTER COLUMN "updatedAt" SET NOT NULL;

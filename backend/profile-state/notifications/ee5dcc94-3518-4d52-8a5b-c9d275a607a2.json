@@ -1,0 +1,322 @@
+[
+  {
+    "id": "1774364765387-5j1fyf",
+    "tenantId": "ee5dcc94-3518-4d52-8a5b-c9d275a607a2",
+    "createdAt": "2026-03-24T15:06:05.387Z",
+    "read": false,
+    "kind": "profile",
+    "title": "Nightly warmup queue refreshed",
+    "body": "0 profile(s) are queued for the next safe warmup window.",
+    "severity": "info"
+  },
+  {
+    "id": "1774051628044-6zay6x",
+    "tenantId": "ee5dcc94-3518-4d52-8a5b-c9d275a607a2",
+    "createdAt": "2026-03-21T00:07:08.044Z",
+    "read": false,
+    "kind": "profile",
+    "title": "Nightly warmup queue refreshed",
+    "body": "0 profile(s) are queued for the next safe warmup window.",
+    "severity": "info"
+  },
+  {
+    "id": "1774041219889-62y1zv",
+    "tenantId": "ee5dcc94-3518-4d52-8a5b-c9d275a607a2",
+    "createdAt": "2026-03-20T21:13:39.889Z",
+    "read": false,
+    "kind": "profile",
+    "title": "Nightly warmup queue refreshed",
+    "body": "0 profile(s) are queued for the next safe warmup window.",
+    "severity": "info"
+  },
+  {
+    "id": "1774012420582-iztf9w",
+    "tenantId": "ee5dcc94-3518-4d52-8a5b-c9d275a607a2",
+    "createdAt": "2026-03-20T13:13:40.582Z",
+    "read": false,
+    "kind": "profile",
+    "title": "Nightly warmup queue refreshed",
+    "body": "0 profile(s) are queued for the next safe warmup window.",
+    "severity": "info"
+  },
+  {
+    "id": "1774012408573-pdkrei",
+    "tenantId": "ee5dcc94-3518-4d52-8a5b-c9d275a607a2",
+    "createdAt": "2026-03-20T13:13:28.573Z",
+    "read": false,
+    "kind": "profile",
+    "title": "Nightly warmup queue refreshed",
+    "body": "0 profile(s) are queued for the next safe warmup window.",
+    "severity": "info"
+  },
+  {
+    "id": "1774010081322-7z1vvo",
+    "tenantId": "ee5dcc94-3518-4d52-8a5b-c9d275a607a2",
+    "createdAt": "2026-03-20T12:34:41.322Z",
+    "read": false,
+    "kind": "profile",
+    "title": "Nightly warmup queue refreshed",
+    "body": "0 profile(s) are queued for the next safe warmup window.",
+    "severity": "info"
+  },
+  {
+    "id": "1774009925492-i1nay5",
+    "tenantId": "ee5dcc94-3518-4d52-8a5b-c9d275a607a2",
+    "createdAt": "2026-03-20T12:32:05.492Z",
+    "read": false,
+    "kind": "profile",
+    "title": "Nightly warmup queue refreshed",
+    "body": "0 profile(s) are queued for the next safe warmup window.",
+    "severity": "info"
+  },
+  {
+    "id": "1774009917552-fi4g74",
+    "tenantId": "ee5dcc94-3518-4d52-8a5b-c9d275a607a2",
+    "createdAt": "2026-03-20T12:31:57.552Z",
+    "read": false,
+    "kind": "profile",
+    "title": "Nightly warmup queue refreshed",
+    "body": "0 profile(s) are queued for the next safe warmup window.",
+    "severity": "info"
+  },
+  {
+    "id": "1774009908702-a6ewej",
+    "tenantId": "ee5dcc94-3518-4d52-8a5b-c9d275a607a2",
+    "createdAt": "2026-03-20T12:31:48.702Z",
+    "read": false,
+    "kind": "profile",
+    "title": "Nightly warmup queue refreshed",
+    "body": "0 profile(s) are queued for the next safe warmup window.",
+    "severity": "info"
+  },
+  {
+    "id": "1774009900425-4napi0",
+    "tenantId": "ee5dcc94-3518-4d52-8a5b-c9d275a607a2",
+    "createdAt": "2026-03-20T12:31:40.425Z",
+    "read": false,
+    "kind": "profile",
+    "title": "Nightly warmup queue refreshed",
+    "body": "0 profile(s) are queued for the next safe warmup window.",
+    "severity": "info"
+  },
+  {
+    "id": "1774009876225-h6oher",
+    "tenantId": "ee5dcc94-3518-4d52-8a5b-c9d275a607a2",
+    "createdAt": "2026-03-20T12:31:16.225Z",
+    "read": false,
+    "kind": "profile",
+    "title": "Nightly warmup queue refreshed",
+    "body": "0 profile(s) are queued for the next safe warmup window.",
+    "severity": "info"
+  },
+  {
+    "id": "1774009865075-vsf0dz",
+    "tenantId": "ee5dcc94-3518-4d52-8a5b-c9d275a607a2",
+    "createdAt": "2026-03-20T12:31:05.075Z",
+    "read": false,
+    "kind": "profile",
+    "title": "Nightly warmup queue refreshed",
+    "body": "0 profile(s) are queued for the next safe warmup window.",
+    "severity": "info"
+  },
+  {
+    "id": "1774009853865-pem4bi",
+    "tenantId": "ee5dcc94-3518-4d52-8a5b-c9d275a607a2",
+    "createdAt": "2026-03-20T12:30:53.865Z",
+    "read": false,
+    "kind": "profile",
+    "title": "Nightly warmup queue refreshed",
+    "body": "0 profile(s) are queued for the next safe warmup window.",
+    "severity": "info"
+  },
+  {
+    "id": "1774009845288-d96k6j",
+    "tenantId": "ee5dcc94-3518-4d52-8a5b-c9d275a607a2",
+    "createdAt": "2026-03-20T12:30:45.288Z",
+    "read": false,
+    "kind": "profile",
+    "title": "Nightly warmup queue refreshed",
+    "body": "0 profile(s) are queued for the next safe warmup window.",
+    "severity": "info"
+  },
+  {
+    "id": "1774009835415-c966tb",
+    "tenantId": "ee5dcc94-3518-4d52-8a5b-c9d275a607a2",
+    "createdAt": "2026-03-20T12:30:35.415Z",
+    "read": false,
+    "kind": "profile",
+    "title": "Nightly warmup queue refreshed",
+    "body": "0 profile(s) are queued for the next safe warmup window.",
+    "severity": "info"
+  },
+  {
+    "id": "1774009828418-xh0qx2",
+    "tenantId": "ee5dcc94-3518-4d52-8a5b-c9d275a607a2",
+    "createdAt": "2026-03-20T12:30:28.418Z",
+    "read": false,
+    "kind": "profile",
+    "title": "Nightly warmup queue refreshed",
+    "body": "0 profile(s) are queued for the next safe warmup window.",
+    "severity": "info"
+  },
+  {
+    "id": "1774006537120-3ndzec",
+    "tenantId": "ee5dcc94-3518-4d52-8a5b-c9d275a607a2",
+    "createdAt": "2026-03-20T11:35:37.120Z",
+    "read": false,
+    "kind": "profile",
+    "title": "Nightly warmup queue refreshed",
+    "body": "0 profile(s) are queued for the next safe warmup window.",
+    "severity": "info"
+  },
+  {
+    "id": "1774006278464-z0i72u",
+    "tenantId": "ee5dcc94-3518-4d52-8a5b-c9d275a607a2",
+    "createdAt": "2026-03-20T11:31:18.464Z",
+    "read": false,
+    "kind": "profile",
+    "title": "Nightly warmup queue refreshed",
+    "body": "0 profile(s) are queued for the next safe warmup window.",
+    "severity": "info"
+  },
+  {
+    "id": "1774005082379-wc1ts8",
+    "tenantId": "ee5dcc94-3518-4d52-8a5b-c9d275a607a2",
+    "createdAt": "2026-03-20T11:11:22.379Z",
+    "read": false,
+    "kind": "profile",
+    "title": "Nightly warmup queue refreshed",
+    "body": "0 profile(s) are queued for the next safe warmup window.",
+    "severity": "info"
+  },
+  {
+    "id": "1773978885417-mu3nmy",
+    "tenantId": "ee5dcc94-3518-4d52-8a5b-c9d275a607a2",
+    "createdAt": "2026-03-20T03:54:45.417Z",
+    "read": false,
+    "kind": "profile",
+    "title": "Nightly warmup queue refreshed",
+    "body": "0 profile(s) are queued for the next safe warmup window.",
+    "severity": "info"
+  },
+  {
+    "id": "1773977915375-maxv8z",
+    "tenantId": "ee5dcc94-3518-4d52-8a5b-c9d275a607a2",
+    "createdAt": "2026-03-20T03:38:35.375Z",
+    "read": false,
+    "kind": "profile",
+    "title": "Nightly warmup queue refreshed",
+    "body": "0 profile(s) are queued for the next safe warmup window.",
+    "severity": "info"
+  },
+  {
+    "id": "1773976952805-vnn4wv",
+    "tenantId": "ee5dcc94-3518-4d52-8a5b-c9d275a607a2",
+    "createdAt": "2026-03-20T03:22:32.805Z",
+    "read": false,
+    "kind": "profile",
+    "title": "Nightly warmup queue refreshed",
+    "body": "0 profile(s) are queued for the next safe warmup window.",
+    "severity": "info"
+  },
+  {
+    "id": "1773976344069-1gcehn",
+    "tenantId": "ee5dcc94-3518-4d52-8a5b-c9d275a607a2",
+    "createdAt": "2026-03-20T03:12:24.069Z",
+    "read": false,
+    "kind": "profile",
+    "title": "Nightly warmup queue refreshed",
+    "body": "0 profile(s) are queued for the next safe warmup window.",
+    "severity": "info"
+  },
+  {
+    "id": "1773975991287-jyxw7l",
+    "tenantId": "ee5dcc94-3518-4d52-8a5b-c9d275a607a2",
+    "createdAt": "2026-03-20T03:06:31.287Z",
+    "read": false,
+    "kind": "profile",
+    "title": "Nightly warmup queue refreshed",
+    "body": "0 profile(s) are queued for the next safe warmup window.",
+    "severity": "info"
+  },
+  {
+    "id": "1773974931490-tove1e",
+    "tenantId": "ee5dcc94-3518-4d52-8a5b-c9d275a607a2",
+    "createdAt": "2026-03-20T02:48:51.490Z",
+    "read": false,
+    "kind": "profile",
+    "title": "Nightly warmup queue refreshed",
+    "body": "0 profile(s) are queued for the next safe warmup window.",
+    "severity": "info"
+  },
+  {
+    "id": "1773974297159-1nyv00",
+    "tenantId": "ee5dcc94-3518-4d52-8a5b-c9d275a607a2",
+    "createdAt": "2026-03-20T02:38:17.159Z",
+    "read": false,
+    "kind": "profile",
+    "title": "Nightly warmup queue refreshed",
+    "body": "0 profile(s) are queued for the next safe warmup window.",
+    "severity": "info"
+  },
+  {
+    "id": "1773973814002-m7wota",
+    "tenantId": "ee5dcc94-3518-4d52-8a5b-c9d275a607a2",
+    "createdAt": "2026-03-20T02:30:14.002Z",
+    "read": false,
+    "kind": "profile",
+    "title": "Nightly warmup queue refreshed",
+    "body": "0 profile(s) are queued for the next safe warmup window.",
+    "severity": "info"
+  },
+  {
+    "id": "1773973363165-bgnjy2",
+    "tenantId": "ee5dcc94-3518-4d52-8a5b-c9d275a607a2",
+    "createdAt": "2026-03-20T02:22:43.165Z",
+    "read": false,
+    "kind": "profile",
+    "title": "Nightly warmup queue refreshed",
+    "body": "0 profile(s) are queued for the next safe warmup window.",
+    "severity": "info"
+  },
+  {
+    "id": "1773972747745-qx64p8",
+    "tenantId": "ee5dcc94-3518-4d52-8a5b-c9d275a607a2",
+    "createdAt": "2026-03-20T02:12:27.745Z",
+    "read": false,
+    "kind": "profile",
+    "title": "Nightly warmup queue refreshed",
+    "body": "0 profile(s) are queued for the next safe warmup window.",
+    "severity": "info"
+  },
+  {
+    "id": "1773972007638-19ta7m",
+    "tenantId": "ee5dcc94-3518-4d52-8a5b-c9d275a607a2",
+    "createdAt": "2026-03-20T02:00:07.638Z",
+    "read": false,
+    "kind": "profile",
+    "title": "Nightly warmup queue refreshed",
+    "body": "0 profile(s) are queued for the next safe warmup window.",
+    "severity": "info"
+  },
+  {
+    "id": "1773971781596-raqajf",
+    "tenantId": "ee5dcc94-3518-4d52-8a5b-c9d275a607a2",
+    "createdAt": "2026-03-20T01:56:21.596Z",
+    "read": false,
+    "kind": "profile",
+    "title": "Nightly warmup queue refreshed",
+    "body": "0 profile(s) are queued for the next safe warmup window.",
+    "severity": "info"
+  },
+  {
+    "id": "1773971488003-4poc5j",
+    "tenantId": "ee5dcc94-3518-4d52-8a5b-c9d275a607a2",
+    "createdAt": "2026-03-20T01:51:28.003Z",
+    "read": false,
+    "kind": "profile",
+    "title": "Nightly warmup queue refreshed",
+    "body": "0 profile(s) are queued for the next safe warmup window.",
+    "severity": "info"
+  }
+]

@@ -1,0 +1,72 @@
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "postgresql"
+  url      = env("DATABASE_URL")
+}
+
+model Tenant {
+  id           String    @id @default(uuid())
+  name         String
+  plan         String    @default("free") // free, pro, enterprise
+  seatsAllowed Int       @default(1)
+  seatsUsed    Int       @default(0)
+  createdAt    DateTime  @default(now())
+  users        User[]
+  profiles     Profile[]
+  accounts     Account[]
+}
+
+model User {
+  id        String   @id @default(uuid())
+  email     String   @unique
+  password  String
+  role      String   @default("USER")
+  tenantId  String
+  tenant    Tenant   @relation(fields: [tenantId], references: [id])
+  createdAt DateTime @default(now())
+}
+
+model Profile {
+  id        String    @id @default(uuid())
+  name      String
+  tenantId  String
+  tenant    Tenant    @relation(fields: [tenantId], references: [id])
+  accounts  Account[]
+  createdAt DateTime  @default(now())
+
+  @@index([tenantId])
+}
+
+model Account {
+  id        String    @id @default(uuid())
+  username  String
+  password  String
+  profileId String
+  profile   Profile   @relation(fields: [profileId], references: [id])
+  tenantId  String
+  tenant    Tenant    @relation(fields: [tenantId], references: [id])
+  jobLogs   JobLog[]
+  createdAt DateTime  @default(now())
+
+  @@index([profileId])
+  @@index([tenantId])
+}
+
+model JobLog {
+  id        String    @id @default(uuid())
+  accountId String?
+  account   Account?  @relation(fields: [accountId], references: [id])
+  type      String
+  status    String
+  attempts  Int       @default(0)
+  output    String?
+  error     String?
+  createdAt DateTime  @default(now())
+  updatedAt DateTime  @updatedAt
+
+  @@index([accountId])
+  @@index([type])
+}

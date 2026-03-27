@@ -1,0 +1,52 @@
+{
+  "exits": [
+    {
+      "name": "wg-exit-1-primary",
+      "host": "IP_AQUI",
+      "port": 1080,
+      "protocol": "HTTP",
+      "username": "",
+      "password": "",
+      "group": "stable_internal",
+      "cluster": "wg-cluster-1",
+      "country": "es",
+      "activate": true
+    },
+    {
+      "name": "wg-exit-2-geo",
+      "host": "IP_AQUI",
+      "port": 1080,
+      "protocol": "HTTP",
+      "username": "",
+      "password": "",
+      "group": "geo_sensitive",
+      "cluster": "wg-cluster-2",
+      "country": "pt",
+      "activate": true
+    },
+    {
+      "name": "wg-exit-3-backup",
+      "host": "IP_AQUI",
+      "port": 1080,
+      "protocol": "HTTP",
+      "username": "",
+      "password": "",
+      "group": "overflow_backup",
+      "cluster": "wg-cluster-3",
+      "country": "es",
+      "activate": true
+    },
+    {
+      "name": "wg-exit-4-isolated",
+      "host": "IP_AQUI",
+      "port": 1080,
+      "protocol": "HTTP",
+      "username": "",
+      "password": "",
+      "group": "high_separation",
+      "cluster": "wg-cluster-4",
+      "country": "us",
+      "activate": true
+    }
+  ]
+}

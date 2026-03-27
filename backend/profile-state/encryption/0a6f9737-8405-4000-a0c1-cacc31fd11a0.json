@@ -1,0 +1,16 @@
+{
+  "profileId": "0a6f9737-8405-4000-a0c1-cacc31fd11a0",
+  "tenantId": "08889bc5-d723-4f32-b842-c64fa00c2fde",
+  "version": "zkp-v2",
+  "algorithm": "aes-256-gcm",
+  "wrappedDek": "{\"iv\":\"QUJ3vgcquW2Bhzlm\",\"tag\":\"ofiF2F7LH2Yw0lVvBUCi5A==\",\"payload\":\"Swn0HDl2AszslREadSQficsQGtgRs1yRcDd9RflyzZw=\"}",
+  "createdAt": "2026-03-20T13:13:27.361Z",
+  "rotatedAt": "2026-03-20T13:13:27.361Z",
+  "adminRecovery": {
+    "enabled": true,
+    "policy": "dual-control-escrow",
+    "legalHoldReady": true,
+    "requiresReason": true,
+    "lastRecoveryAt": null
+  }
+}
