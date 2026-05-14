@@ -1,42 +1,22 @@
-# Dependencies
+# Node
 node_modules/
-.pnp
-.pnp.js
-
-# Testing
-coverage/
-
-# Production
-build/
 dist/
+.env
+.env.local
 
-# Logs
-logs/
+# Python
+__pycache__/
+*.pyc
+.venv/
+
+# Docker
 *.log
-npm-debug.log*
-yarn-debug.log*
-yarn-error.log*
 
-# Environment
-.env*
-!.env.example
-
-# Local Data / Cache
-data/
-profiles/
-.cache/
-__MARIANA_CACHE__/
-
-# IDE/Editors
-.vscode/
-.idea/
-*.swp
-*.swo
-
-# OS files
+# OS
 .DS_Store
 Thumbs.db
 
-# Temp push logs
-push_*.log
-push_*.txt
+# IDE
+.vscode/
+.idea/
+*.swp
