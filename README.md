@@ -76,7 +76,7 @@ Standard base URL: `http://localhost:4000/api`
 ---
 
 ## 🚀 Ethernet Boost Technology (Anti-Ban 2026)
-CamelFarm incorporates a proprietary networking layer that detects and prioritizes physical Ethernet interfaces. 
+CamelFarm incorporates a proprietary networking layer that detects and prioritizes physical Ethernet interfaces.
 - **Stability**: Reduces packet jitter by up to 40% compared to WiFi, eliminating "network-lag" bot flags.
 - **Hardware Binding**: Unlike software-only spoofers, "Ethernet Boost" binds the Chromium process to the OS-level static descriptors of your physical card (ethX, en0, or Ethernet).
 - **Setup Guide**:
@@ -104,7 +104,7 @@ To scale the architecture horizontally up to 10 instances while maintaining a st
 docker-compose up -d --scale edge-workers=5
 ```
 
-This spins up the Redis caching layer, Postgres DB, and 5 PM2-orchestrated edge workers ready to receive REST/RPA requests while persisting profile states to the mapped volumes. 
+This spins up the Redis caching layer, Postgres DB, and 5 PM2-orchestrated edge workers ready to receive REST/RPA requests while persisting profile states to the mapped volumes.
 
 To monitor RAM and CPU across your edge workers within Docker:
 ```bash
